@@ -7,7 +7,7 @@ export const StyledHeader = styled.div`
   background-image: url(${HeaderBG});
   height: 135px;
   width: 100%;
-  padding: 30px;
+  padding: 35px 25px;
   position: relative;
   margin-bottom: 80px;
 `;
@@ -21,6 +21,7 @@ export const FilterInput = styled.input`
   border: 0;
   outline: none;
   flex: 2;
+  font-size: 16px;
 `;
 
 export const FilterContainer = styled.div`
@@ -28,7 +29,7 @@ export const FilterContainer = styled.div`
   padding: 30px 20px;
   border-radius: 5px;
   width: 100%;
-  margin-top: 35px;
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
 `;

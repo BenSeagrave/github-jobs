@@ -13,13 +13,18 @@ import LocationIcon from "./icon-filter.svg";
 const Header = () => {
   return (
     <StyledHeader>
-      <img src={Logo} alt="logo" />
-      <ThemeSwitch>ThemeSwitch</ThemeSwitch>
-      <FilterContainer>
-        <FilterInput type="text" placeholder="Filter by title..."></FilterInput>
-        <FilterIcon src={LocationIcon} />
-        <StyledSearchIcon />
-      </FilterContainer>
+      <div className="container">
+        <img src={Logo} alt="logo" />
+        <ThemeSwitch>ThemeSwitch</ThemeSwitch>
+        <FilterContainer>
+          <FilterInput
+            type="text"
+            placeholder="Filter by title..."
+          ></FilterInput>
+          <FilterIcon src={LocationIcon} />
+          <StyledSearchIcon />
+        </FilterContainer>
+      </div>
     </StyledHeader>
   );
 };
