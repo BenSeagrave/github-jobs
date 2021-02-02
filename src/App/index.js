@@ -25,6 +25,7 @@ function App() {
             <Card key={job.id} job={job} />
           ))}
         </GridContainer>
+        <LoadMore>Load More</LoadMore>
       </BodyContainer>
     </div>
   );
@@ -35,7 +36,7 @@ const BodyContainer = styled.div`
 `;
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 1f;
+  grid-template-columns: 1fr;
   grid-column-gap: 1rem;
   grid-row-gap: 3rem;
   justify-content: center;
@@ -46,6 +47,15 @@ const GridContainer = styled.div`
   @media (min-width: 1440px) {
     grid-template-columns: repeat(3, 1fr);
   }
+`;
+
+const LoadMore = styled.button`
+  background-color: #5964e0;
+  padding: 30px 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
 `;
 
 export default App;

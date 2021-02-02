@@ -44,14 +44,14 @@ const Card = (props) => {
       <a href={company_url} target="_blank" rel="noreferrer">
         <CardImage src={company_logo ? company_logo : defaultLogo} />
       </a>
-      <h4>
+      <CardMeta>
         <TimeAgo date={created_at} formatter={formatter} /> &bull; {type}
-      </h4>
-      <h3>{title.length > 40 ? `${title.substring(0, 40)}...` : title}</h3>
-      <CardCompany>
-        <a href={company_url} target="_blank" rel="noreferrer">
-          {company}
-        </a>
+      </CardMeta>
+      <CardTitle>
+        {title.length > 40 ? `${title.substring(0, 40)}...` : title}
+      </CardTitle>
+      <CardCompany href={company_url} target="_blank" rel="noreferrer">
+        {company}
       </CardCompany>
       <CardLocation>{location}</CardLocation>
     </CardContainer>
@@ -75,20 +75,28 @@ const CardImage = styled.img`
   background-color: white;
   border: 1px solid #e3e6e8;
 `;
-const CardLocation = styled.h4`
-  color: #5964e0;
+const CardMeta = styled.p`
+  color: #6e8098;
+  margin-top: 1rem;
 `;
-const CardCompany = styled.h4`
-  & > a {
-    color: #6e8098;
-    text-decoration: none;
-    &:visited {
-      color: #6e8098;
-    }
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+const CardTitle = styled.h3`
+  margin-top: 1rem;
 `;
 
+const CardCompany = styled.a`
+  display: block;
+  margin-top: 1rem;
+  color: #6e8098;
+  text-decoration: none;
+  &:visited {
+    color: #6e8098;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+const CardLocation = styled.h4`
+  color: #5964e0;
+  margin-top: 1rem;
+`;
 export default Card;
