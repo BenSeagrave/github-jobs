@@ -3,6 +3,7 @@ import styled from "styled-components";
 import defaultLogo from "./defaultLogo.svg";
 import TimeAgo from "react-timeago";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+import { Link } from "react-router-dom";
 
 var enStrings = {
   prefixAgo: null,
@@ -47,9 +48,11 @@ const Card = (props) => {
       <CardMeta>
         <TimeAgo date={created_at} formatter={formatter} /> &bull; {type}
       </CardMeta>
-      <CardTitle>
-        {title.length > 40 ? `${title.substring(0, 40)}...` : title}
-      </CardTitle>
+      <Link to={`/job/${id}`}>
+        <CardTitle>
+          {title.length > 40 ? `${title.substring(0, 40)}...` : title}
+        </CardTitle>
+      </Link>
       <CardCompany href={company_url} target="_blank" rel="noreferrer">
         {company}
       </CardCompany>

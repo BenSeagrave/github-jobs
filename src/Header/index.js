@@ -8,7 +8,6 @@ import {
   StyledSearchIcon,
 } from "./styles";
 import Logo from "./logo.svg";
-import LocationIcon from "./icon-filter.svg";
 
 const Header = () => {
   return (
@@ -16,14 +15,6 @@ const Header = () => {
       <div className="container">
         <img src={Logo} alt="logo" />
         <ThemeSwitch>ThemeSwitch</ThemeSwitch>
-        <FilterContainer>
-          <FilterInput
-            type="text"
-            placeholder="Filter by title..."
-          ></FilterInput>
-          <FilterIcon src={LocationIcon} />
-          <StyledSearchIcon />
-        </FilterContainer>
       </div>
     </StyledHeader>
   );

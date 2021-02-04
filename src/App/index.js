@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Switch, Route, Link } from "react-router-dom";
 import Header from "../Header/";
-import Card from "../Card/";
+import Jobs from "../Jobs/";
+import Job from "../Job/";
 import styled from "styled-components";
+import Filter from "../Filter/Filter";
 
 function App() {
   const [jobsList, setJobsList] = useState([]);
@@ -22,25 +25,28 @@ function App() {
     setJobsShown(jobsList.slice(0, 12));
   }, [jobsList]);
 
-  const handleLoadMore = () => {
-    setJobsShown(jobsList.slice(0, jobsShown.length + 6));
-  };
   return (
     <div className="App">
-      <Header></Header>
+      <Header jobsList={jobsList}></Header>
       <BodyContainer>
-        <GridContainer className="container">
-          {jobsShown.map((job) => (
-            <Card key={job.id} job={job} />
-          ))}
-        </GridContainer>
-        <div className="container center">
-          {jobsList.length > 12 && jobsList.length !== jobsShown.length ? (
-            <LoadMore onClick={handleLoadMore}>Load More</LoadMore>
-          ) : (
-            ""
-          )}
-        </div>
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <>
+                <Filter />
+                <Jobs
+                  jobsList={jobsList}
+                  jobsShown={jobsShown}
+                  setJobsList={setJobsList}
+                  setJobsShown={setJobsShown}
+                />
+              </>
+            )}
+          />
+          <Route path="/job/:id" render={() => <Job jobsList={jobsList} />} />
+        </Switch>
       </BodyContainer>
     </div>
   );
@@ -48,35 +54,6 @@ function App() {
 
 const BodyContainer = styled.div`
   padding: 25px;
-`;
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-column-gap: 1rem;
-  grid-row-gap: 3rem;
-  justify-content: center;
-  margin-bottom: 50px;
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-    /* margin: 0 auto 50px 0; */
-  }
-  @media (min-width: 1440px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
-
-const LoadMore = styled.button`
-  background-color: #5964e0;
-  padding: 20px 35px 15px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  color: white;
-  &:hover {
-    background-color: #939bf4;
-    cursor: pointer;
-  }
 `;
 
 export default App;
