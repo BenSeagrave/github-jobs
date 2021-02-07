@@ -17,7 +17,7 @@ const Job = ({ jobsList }) => {
 };
 
 const SmallCardContainer = styled.div`
-  /* background: var9; */
+  background: var(--white);
   padding: 50px 20px;
   border-radius: 5px;
   width: 100%;
