@@ -1,5 +1,5 @@
 import React from "react";
-import defaultLogo from "./defaultLogo.svg";
+import defaultLogo from "../defaultLogo.svg";
 import TimeAgo from "react-timeago";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import { Link } from "react-router-dom";
@@ -34,6 +34,7 @@ const enStrings = {
 const formatter = buildFormatter(enStrings);
 
 const Card = (props) => {
+  console.log(props);
   const {
     company,
     company_logo,
@@ -57,7 +58,7 @@ const Card = (props) => {
       </CardMeta>
       <CardTitle>
         <Link to={`/job/${id}`}>
-          {title.length > 40 ? `${title.substring(0, 40)}...` : title}
+          {title && title.length > 40 ? `${title.substring(0, 40)}...` : title}
         </Link>
       </CardTitle>
       <CardCompany href={company_url} target="_blank" rel="noreferrer">

@@ -1,18 +1,25 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import Card from "../Card";
+import defaultLogo from "../defaultLogo.svg";
 
 const Job = ({ jobsList }) => {
   const { id } = useParams();
-  const job = jobsList.filter((job) => job.id === id);
-  console.log(job[0]);
+  const { company_logo, company_url, company } = jobsList.find(
+    (job) => job.id === id
+  );
   return (
-    <SmallCardContainer>
-      <SmallCardImage src={job[0].company_logo} />
-      <h3>{job[0].title}</h3>
-      <h4>sogitial.co</h4>
-      <SmallCardButton>Company Site</SmallCardButton>
-    </SmallCardContainer>
+    <>
+      <SmallCardContainer>
+        <SmallCardImage src={company_logo ? company_logo : defaultLogo} />
+        <SmallCardCompany>{company}</SmallCardCompany>
+        <SmallCardCompanyUrl>{company_url}</SmallCardCompanyUrl>
+        <SmallCardButton>Company Site</SmallCardButton>
+      </SmallCardContainer>
+
+      <Card job={jobsList.find((job) => job.id === id)} />
+    </>
   );
 };
 
@@ -28,6 +35,7 @@ const SmallCardContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   position: relative;
+  text-align: center;
 `;
 
 const SmallCardImage = styled.img`
@@ -41,11 +49,18 @@ const SmallCardImage = styled.img`
   border: 1px solid #e3e6e8;
 `;
 
+const SmallCardCompany = styled.h3`
+  margin-bottom: 10px;
+`;
+const SmallCardCompanyUrl = styled.h4`
+  margin-bottom: 20px;
+  color: var(--dark-grey);
+`;
 const SmallCardButton = styled.a`
-  border: 1px solid black;
-  background-color: grey;
+  background-color: rgba(89, 100, 224, 0.1);
+  color: var(--violet);
+  padding: 20px 30px 10px;
   display: block;
-  /* background: white; */
   border-radius: 10px;
 `;
 
