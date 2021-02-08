@@ -48,4 +48,5 @@ export const CardCompany = styled.a`
 export const CardLocation = styled.h4`
   color: var(--violet);
   margin-top: 1rem;
+  margin-bottom: 2rem;
 `;

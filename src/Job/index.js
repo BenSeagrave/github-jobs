@@ -13,12 +13,14 @@ const Job = ({ jobsList }) => {
     <>
       <SmallCardContainer>
         <SmallCardImage src={company_logo ? company_logo : defaultLogo} />
-        <SmallCardCompany>{company}</SmallCardCompany>
-        <SmallCardCompanyUrl>{company_url}</SmallCardCompanyUrl>
+        <span>
+          <SmallCardCompany>{company}</SmallCardCompany>
+          <SmallCardCompanyUrl>{company_url}</SmallCardCompanyUrl>
+        </span>
         <SmallCardButton>Company Site</SmallCardButton>
       </SmallCardContainer>
 
-      <Card job={jobsList.find((job) => job.id === id)} />
+      <Card job={jobsList.find((job) => job.id === id)} large={true} />
     </>
   );
 };
@@ -36,6 +38,14 @@ const SmallCardContainer = styled.div`
   align-items: center;
   position: relative;
   text-align: center;
+  @media (min-width: 600px) {
+    height: 140px;
+    text-align: left;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-left: 180px;
+    padding-right: 35px;
+  }
 `;
 
 const SmallCardImage = styled.img`
@@ -47,6 +57,12 @@ const SmallCardImage = styled.img`
   border-radius: 15px;
   background-color: white;
   border: 1px solid #e3e6e8;
+  @media (min-width: 600px) {
+    width: 140px;
+    height: 140px;
+    left: 0;
+    top: 0;
+  }
 `;
 
 const SmallCardCompany = styled.h3`
@@ -62,6 +78,7 @@ const SmallCardButton = styled.a`
   padding: 20px 30px 10px;
   display: block;
   border-radius: 10px;
+  flex-shrink: 0;
 `;
 
 export default Job;

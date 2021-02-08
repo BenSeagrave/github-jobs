@@ -3,3 +3,5 @@ Opacity on button backgrounds - Might need to change to SASS variables if possib
 Fix bug where page crashes when refresh job site as object is empty whilst waiting for fetch call.
 
 Check if company url is there, and is more than just 'http'. if not then put some default text.
+
+Seperate small job card component
