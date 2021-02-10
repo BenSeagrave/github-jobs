@@ -20,7 +20,7 @@ const Job = ({ jobsList }) => {
         <SmallCardButton>Company Site</SmallCardButton>
       </SmallCardContainer>
 
-      <Card job={jobsList.find((job) => job.id === id)} large={true} />
+      <Card job={jobsList.find((job) => job.id === id)} full={true} />
     </>
   );
 };

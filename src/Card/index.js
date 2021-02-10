@@ -36,7 +36,7 @@ const enStrings = {
 
 const formatter = buildFormatter(enStrings);
 
-const Card = ({ job, large }) => {
+const Card = ({ job, full }) => {
   const {
     company,
     company_logo,
@@ -55,7 +55,7 @@ const Card = ({ job, large }) => {
     return { __html: input };
   };
 
-  if (large) {
+  if (full) {
     return (
       <>
         <CardContainer>
