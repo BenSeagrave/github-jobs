@@ -4,6 +4,7 @@ import { StyledHeader, ThemeSwitch, Toggle, Ball } from "./styles";
 import Logo from "./logo.svg";
 import Sun from "./icon-sun.svg";
 import Moon from "./icon-moon.svg";
+import { Link } from "react-router-dom";
 
 const Header = ({ theme, setTheme }) => {
   const handleBallClick = (e) => {
@@ -16,7 +17,9 @@ const Header = ({ theme, setTheme }) => {
   return (
     <StyledHeader>
       <div className="container">
-        <img src={Logo} alt="logo" />
+        <Link to="/">
+          <img src={Logo} alt="logo" />
+        </Link>
         <ThemeSwitch>
           <img src={Sun} alt="Sun" />
           <Toggle>

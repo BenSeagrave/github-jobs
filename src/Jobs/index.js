@@ -1,11 +1,22 @@
-import React from "react";
 import styled from "styled-components";
-import Card from "../Card/";
 
-const Jobs = ({ jobsList, jobsShown, setJobsList, setJobsShown }) => {
+import Card from "../Card/";
+import Loading from "../Loading/Loading";
+
+const Jobs = ({
+  jobsList,
+  jobsShown,
+  setJobsList,
+  setJobsShown,
+  isLoading,
+}) => {
   const handleLoadMore = () => {
     setJobsShown(jobsList.slice(0, jobsShown.length + 6));
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <GridContainer className="container">
@@ -23,6 +34,7 @@ const Jobs = ({ jobsList, jobsShown, setJobsList, setJobsShown }) => {
     </>
   );
 };
+
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;

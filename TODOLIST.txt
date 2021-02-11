@@ -1,5 +1,9 @@
-Fix bug where page crashes when refresh job site as object is empty whilst waiting for fetch call.
-
 Check if company url is there, and is more than just 'http'. if not then put some default text.
 
 Seperate small job card component
+
+Store theme in local storage
+
+Check windows preference for theme
+
+Scroll back to top of page after clicking different link

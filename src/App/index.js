@@ -12,6 +12,7 @@ function App() {
   const [jobsList, setJobsList] = useState([]);
   const [jobsShown, setJobsShown] = useState([]);
   const [theme, setTheme] = useState("light");
+  const [isLoading, setLoading] = useState(true);
 
   const lightTheme = {
     backgroundColor: "var(--light-grey)",
@@ -38,12 +39,19 @@ function App() {
       const data = await response.json();
       return data;
     };
-    fetchData().then((jobs) => setJobsList(jobs));
+    fetchData().then((jobs) => {
+      setJobsList(jobs);
+      setLoading(false);
+    });
   }, []);
 
   useEffect(() => {
     setJobsShown(jobsList.slice(0, 12));
   }, [jobsList]);
+
+  // if (isLoading) {
+  //   return <h1>Loading</h1>;
+  // }
 
   return (
     <>
@@ -61,13 +69,17 @@ function App() {
                   <Jobs
                     jobsList={jobsList}
                     jobsShown={jobsShown}
+                    isLoading={isLoading}
                     setJobsList={setJobsList}
                     setJobsShown={setJobsShown}
                   />
                 </>
               )}
             />
-            <Route path="/job/:id" render={() => <Job jobsList={jobsList} />} />
+            <Route
+              path="/job/:id"
+              render={() => <Job jobsList={jobsList} isLoading={isLoading} />}
+            />
           </Switch>
         </BodyContainer>
       </ThemeProvider>

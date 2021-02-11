@@ -3,12 +3,17 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../Card";
 import defaultLogo from "../defaultLogo.svg";
+import Loading from "../Loading/Loading";
 
-const Job = ({ jobsList }) => {
+const Job = ({ jobsList, isLoading }) => {
   const { id } = useParams();
+  if (isLoading) {
+    return <Loading />;
+  }
   const { company_logo, company_url, company } = jobsList.find(
     (job) => job.id === id
   );
+
   return (
     <>
       <SmallCardContainer>
