@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap");
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
 
 * {
   margin: 0;
@@ -10,8 +12,7 @@
   --violet: #5964e0;
   --light-violet: #939bf4;
   --very-dark-blue: #19202d;
-  --very-dark-blue: #121721;
-  --midnight: #19202d;
+  --midnight: #121721;
   --white: #ffffff;
   --grey: #9daec2;
   --light-grey: #f4f6f8;
@@ -22,7 +23,7 @@ body {
   font-family: "Kumbh Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f4f6f8;
+  background: ${(props) => props.theme.backgroundColor};
   font-size: 16px;
   line-height: 1.45;
 }
@@ -30,7 +31,6 @@ body {
 h1 {
   font-size: 28px;
   font-weight: normal;
-  /* margin: 20px 0; */
 }
 h2 {
   font-size: 29px;
@@ -51,3 +51,7 @@ h4 {
 .center {
   text-align: center;
 }
+
+`;
+
+export default GlobalStyle;

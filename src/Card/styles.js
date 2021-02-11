@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  background: var(--white);
+  background: ${(props) => props.theme.cardBackgroundColor};
   padding: 30px 25px;
   position: relative;
   border-radius: 10px;
@@ -25,7 +25,7 @@ export const CardTitle = styled.h3`
   margin-top: 1rem;
   a,
   a:visited {
-    color: var(--midnight);
+    color: ${(props) => props.theme.headerColor};
     text-decoration: none;
   }
   a:hover {

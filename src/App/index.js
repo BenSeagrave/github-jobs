@@ -1,14 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
+import styled, { ThemeProvider } from "styled-components";
+
+import GlobalStyle from "../globalStyles";
 import Header from "../Header/";
 import Jobs from "../Jobs/";
 import Job from "../Job/";
-import styled from "styled-components";
 import Filter from "../Filter/Filter";
 
 function App() {
   const [jobsList, setJobsList] = useState([]);
   const [jobsShown, setJobsShown] = useState([]);
+  const [theme, setTheme] = useState("light");
+
+  const lightTheme = {
+    backgroundColor: "var(--light-grey)",
+    cardBackgroundColor: "var(--white)",
+    headerColor: "var(--black)",
+    button2Background: "#EEEFFC",
+    button2BackgroundHover: "#C5C9F4",
+    button2Color: "#C5C9F4",
+  };
+
+  const darkTheme = {
+    backgroundColor: "var(--midnight)",
+    cardBackgroundColor: "var(--very-dark-blue)",
+    headerColor: "var(--white)",
+    button2Background: "#303742",
+    button2BackgroundHover: "#696E76",
+    button2Color: "var(--white)",
+  };
+
+  const themes = {
+    light: lightTheme,
+    dark: darkTheme,
+  };
 
   // On first load, load data into jobsList state with no search parameters
   useEffect(() => {
@@ -26,29 +52,32 @@ function App() {
   }, [jobsList]);
 
   return (
-    <div className="App">
-      <Header jobsList={jobsList}></Header>
-      <BodyContainer>
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={() => (
-              <>
-                <Filter />
-                <Jobs
-                  jobsList={jobsList}
-                  jobsShown={jobsShown}
-                  setJobsList={setJobsList}
-                  setJobsShown={setJobsShown}
-                />
-              </>
-            )}
-          />
-          <Route path="/job/:id" render={() => <Job jobsList={jobsList} />} />
-        </Switch>
-      </BodyContainer>
-    </div>
+    <>
+      <ThemeProvider theme={themes[theme]}>
+        <GlobalStyle />
+        <Header jobsList={jobsList} theme={theme} setTheme={setTheme}></Header>
+        <BodyContainer>
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={() => (
+                <>
+                  <Filter />
+                  <Jobs
+                    jobsList={jobsList}
+                    jobsShown={jobsShown}
+                    setJobsList={setJobsList}
+                    setJobsShown={setJobsShown}
+                  />
+                </>
+              )}
+            />
+            <Route path="/job/:id" render={() => <Job jobsList={jobsList} />} />
+          </Switch>
+        </BodyContainer>
+      </ThemeProvider>
+    </>
   );
 }
 
