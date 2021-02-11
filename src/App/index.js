@@ -49,9 +49,17 @@ function App() {
     setJobsShown(jobsList.slice(0, 12));
   }, [jobsList]);
 
-  // if (isLoading) {
-  //   return <h1>Loading</h1>;
-  // }
+  // First checks localStorage for a theme, then checks for a system preference to set initial theme
+  useEffect(() => {
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    let localTheme = localStorage.getItem("theme");
+    if (localTheme) {
+      setTheme(localTheme);
+    } else if (preferredTheme.matches) {
+      setTheme("dark");
+      localStorage.setItem("theme", "dark");
+    }
+  }, []);
 
   return (
     <>

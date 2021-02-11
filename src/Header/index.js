@@ -10,8 +10,10 @@ const Header = ({ theme, setTheme }) => {
   const handleBallClick = (e) => {
     if (theme === "light") {
       setTheme("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       setTheme("light");
+      localStorage.setItem("theme", "light");
     }
   };
   return (

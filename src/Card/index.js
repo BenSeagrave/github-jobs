@@ -48,7 +48,7 @@ const Card = ({ job, large }) => {
     location,
     title,
     type,
-    url,
+    // url,
   } = job;
 
   const createDangerousHTML = (input) => {
@@ -129,7 +129,7 @@ const CardDescription = styled.div`
   h3,
   h4,
   h5 {
-    color: var(--black);
+    color: ${(props) => props.theme.headerColor};
   }
   p {
     margin-bottom: 1.8rem;
