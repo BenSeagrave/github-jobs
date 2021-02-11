@@ -20,13 +20,13 @@ const Job = ({ jobsList }) => {
         <SmallCardButton>Company Site</SmallCardButton>
       </SmallCardContainer>
 
-      <Card job={jobsList.find((job) => job.id === id)} full={true} />
+      <Card job={jobsList.find((job) => job.id === id)} large={true} />
     </>
   );
 };
 
 const SmallCardContainer = styled.div`
-  background: var(--white);
+  background: ${(props) => props.theme.cardBackgroundColor};
   padding: 50px 20px;
   border-radius: 5px;
   width: 100%;
@@ -67,6 +67,7 @@ const SmallCardImage = styled.img`
 
 const SmallCardCompany = styled.h3`
   margin-bottom: 10px;
+  color: ${(props) => props.theme.headerColor};
 `;
 const SmallCardCompanyUrl = styled.h4`
   margin-bottom: 20px;

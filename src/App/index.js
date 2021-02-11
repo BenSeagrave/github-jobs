@@ -17,18 +17,12 @@ function App() {
     backgroundColor: "var(--light-grey)",
     cardBackgroundColor: "var(--white)",
     headerColor: "var(--black)",
-    button2Background: "#EEEFFC",
-    button2BackgroundHover: "#C5C9F4",
-    button2Color: "#C5C9F4",
   };
 
   const darkTheme = {
     backgroundColor: "var(--midnight)",
     cardBackgroundColor: "var(--very-dark-blue)",
     headerColor: "var(--white)",
-    button2Background: "#303742",
-    button2BackgroundHover: "#696E76",
-    button2Color: "var(--white)",
   };
 
   const themes = {
