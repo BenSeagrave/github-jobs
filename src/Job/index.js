@@ -16,7 +16,7 @@ const Job = ({ jobsList, isLoading }) => {
 
   return (
     <>
-      <SmallCardContainer>
+      <SmallCardContainer className="container">
         <SmallCardImage src={company_logo ? company_logo : defaultLogo} />
         <span>
           <SmallCardCompany>{company}</SmallCardCompany>
@@ -67,6 +67,7 @@ const SmallCardImage = styled.img`
     height: 140px;
     left: 0;
     top: 0;
+    border-radius: 5px;
   }
 `;
 

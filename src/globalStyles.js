@@ -45,7 +45,8 @@ h4 {
   font-weight: normal;
 }
 .container {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 1110px;
 }
 .center {

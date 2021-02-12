@@ -42,11 +42,11 @@ const GridContainer = styled.div`
   grid-row-gap: 3rem;
   justify-content: center;
   margin-bottom: 50px;
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
     /* margin: 0 auto 50px 0; */
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
   }
 `;

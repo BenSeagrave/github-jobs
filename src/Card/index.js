@@ -7,8 +7,9 @@ import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import { Link } from "react-router-dom";
 import {
   CardContainer,
+  SubContainer,
+  TimeText,
   CardImage,
-  CardMeta,
   CardTitle,
   CardCompany,
   CardLocation,
@@ -58,31 +59,45 @@ const Card = ({ job, large }) => {
   if (large) {
     return (
       <>
-        <CardContainer>
-          <CardMeta>
-            <TimeAgo date={created_at} formatter={formatter} /> &bull; {type}
-          </CardMeta>
-          <CardTitle>
-            <Link to={`/job/${id}`}>
-              {title && title.length > 40
-                ? `${title.substring(0, 40)}...`
-                : title}
-            </Link>
-          </CardTitle>
-          <CardCompany href={company_url} target="_blank" rel="noreferrer">
-            {company}
-          </CardCompany>
-          <CardLocation>{location}</CardLocation>
-          <Button>Apply Now</Button>
-          <CardDescription
-            dangerouslySetInnerHTML={createDangerousHTML(description)}
-          />
-        </CardContainer>
+        <div className="container">
+          <CardContainer>
+            <SubContainer>
+              <span>
+                <TimeText>
+                  <TimeAgo date={created_at} formatter={formatter} /> &bull;{" "}
+                  {type}
+                </TimeText>
+                <CardTitle>{title}</CardTitle>
+                <CardLocation>{location}</CardLocation>
+              </span>
+              <Button>Apply Now</Button>
+            </SubContainer>
+            <CardDescription
+              dangerouslySetInnerHTML={createDangerousHTML(description)}
+            />
+          </CardContainer>
+        </div>
         <Footer>
-          <h3>How to Apply</h3>
-          <p dangerouslySetInnerHTML={createDangerousHTML(how_to_apply)}></p>
+          <div className="container">
+            <HowToApply>
+              <h3>How to Apply</h3>
+              <p
+                dangerouslySetInnerHTML={createDangerousHTML(how_to_apply)}
+              ></p>
+            </HowToApply>
+          </div>
+          <ApplyNowBG>
+            <div className="container">
+              <ApplyNow>
+                <ApplyDetails>
+                  <h3>{title}</h3>
+                  <h4>{company}</h4>
+                </ApplyDetails>
+                <Button>Apply Now</Button>
+              </ApplyNow>
+            </div>
+          </ApplyNowBG>
         </Footer>
-        <Button>Apply Now</Button>
       </>
     );
   } else {
@@ -91,9 +106,9 @@ const Card = ({ job, large }) => {
         <a href={company_url} target="_blank" rel="noreferrer">
           <CardImage src={company_logo ? company_logo : defaultLogo} />
         </a>
-        <CardMeta>
+        <TimeText>
           <TimeAgo date={created_at} formatter={formatter} /> &bull; {type}
-        </CardMeta>
+        </TimeText>
         <CardTitle>
           <Link to={`/job/${id}`}>
             {title && title.length > 40
@@ -117,12 +132,18 @@ const Button = styled.button`
   border-radius: 6px;
   padding: 20px 10px 10px;
   color: var(--white);
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   font-size: 16px;
+  flex-shrink: 0;
+  @media (min-width: 600px) {
+    width: auto;
+    padding: 20px 40px 10px;
+  }
 `;
 export default Card;
 
 const CardDescription = styled.div`
+  margin-top: 2rem;
   word-wrap: break-word;
   h1,
   h2,
@@ -145,16 +166,21 @@ const CardDescription = styled.div`
     padding-left: 20px;
     color: var(--dark-grey);
   }
+  @media (min-width: 600px) {
+    margin-top: 0;
+  }
 `;
 
-const Footer = styled.div`
+const Footer = styled.div``;
+
+const HowToApply = styled.div`
   background: url(${footerBGMobile});
   background-size: cover;
   padding: 30px 25px;
   position: relative;
   border-radius: 10px;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   color: white;
   word-wrap: break-word;
   a,
@@ -164,5 +190,35 @@ const Footer = styled.div`
   @media (min-width: 600px) {
     background: url(${footerBGDesktop});
     background-size: cover;
+  }
+`;
+
+const ApplyNowBG = styled.div`
+  background: ${(props) => props.theme.cardBackgroundColor};
+  margin: 0 -25px -25px;
+  padding: 0px 25px;
+  position: relative;
+  @media (min-width: 600px) {
+    padding: 0px 40px;
+  }
+`;
+
+const ApplyNow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: ${(props) => props.theme.cardBackgroundColor};
+  padding: 20px 0;
+`;
+const ApplyDetails = styled.div`
+  display: none;
+  h3 {
+    color: ${(props) => props.theme.headerColor};
+  }
+  h4 {
+    color: var(--dark-grey);
+  }
+  @media (min-width: 600px) {
+    display: inline;
   }
 `;
