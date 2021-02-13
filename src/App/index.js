@@ -17,13 +17,19 @@ function App() {
   const lightTheme = {
     backgroundColor: "var(--light-grey)",
     cardBackgroundColor: "var(--white)",
+    buttonBackgroundColor: "rgba(89, 100, 224, 0.1)",
+    buttonHoverBackgroundColor: "rgba(89, 100, 224, 0.25)",
     headerColor: "var(--black)",
+    buttonColor: "var(--violet)",
   };
 
   const darkTheme = {
     backgroundColor: "var(--midnight)",
     cardBackgroundColor: "var(--very-dark-blue)",
+    buttonBackgroundColor: "rgba(255, 255, 255, 0.1)",
+    buttonHoverBackgroundColor: "rgba(255, 255, 255, 0.25)",
     headerColor: "var(--white)",
+    buttonColor: "var(--white)",
   };
 
   const themes = {

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import TimeAgo from "react-timeago";
 
 export const CardContainer = styled.div`
   background: ${(props) => props.theme.cardBackgroundColor};

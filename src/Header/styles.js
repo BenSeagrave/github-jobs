@@ -1,13 +1,18 @@
 import styled from "styled-components";
-import HeaderBG from "./bg-pattern-header.svg";
+import MobileHeaderBG from "./bg-pattern-header-mobile.svg";
+import DesktopHeaderBG from "./bg-pattern-header-desktop.svg";
 
 export const StyledHeader = styled.div`
-  background-image: url(${HeaderBG});
-  height: 135px;
+  background-image: url(${MobileHeaderBG});
+  height: 160px;
   width: 100%;
   padding: 35px 25px;
   position: relative;
   margin-bottom: 80px;
+  background-size: cover;
+  @media (min-width: 600px) {
+    background-image: url(${DesktopHeaderBG});
+  }
 `;
 
 export const ThemeSwitch = styled.div`

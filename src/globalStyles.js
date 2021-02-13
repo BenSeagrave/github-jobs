@@ -48,6 +48,25 @@ h4 {
   margin-left: auto;
   margin-right: auto;
   max-width: 1110px;
+  //tablet portrait and up
+  @media (min-width: 600px) {
+    
+    
+  }
+  //tablet landscape and up
+  @media (min-width: 900px) {
+    
+  }
+
+  //desktop and up
+  @media (min-width: 1200px) {
+
+  }
+}
+.largeCardContainer {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 730px;;
 }
 .center {
   text-align: center;

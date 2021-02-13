@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../Button/Button";
 
 import Card from "../Card/";
 import Loading from "../Loading/Loading";
@@ -26,7 +27,7 @@ const Jobs = ({
       </GridContainer>
       <div className="container center">
         {jobsList.length > 12 && jobsList.length !== jobsShown.length ? (
-          <LoadMore onClick={handleLoadMore}>Load More</LoadMore>
+          <Button onClick={handleLoadMore}>Load More</Button>
         ) : (
           ""
         )}
@@ -44,24 +45,9 @@ const GridContainer = styled.div`
   margin-bottom: 50px;
   @media (min-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
-    /* margin: 0 auto 50px 0; */
   }
   @media (min-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
-  }
-`;
-
-const LoadMore = styled.button`
-  background-color: #5964e0;
-  padding: 20px 35px 15px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  color: white;
-  &:hover {
-    background-color: #939bf4;
-    cursor: pointer;
   }
 `;
 

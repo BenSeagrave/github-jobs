@@ -15,6 +15,7 @@ import {
   CardLocation,
 } from "./styles";
 import styled from "styled-components";
+import Button from "../Button/Button";
 
 const enStrings = {
   prefixAgo: null,
@@ -49,7 +50,7 @@ const Card = ({ job, large }) => {
     location,
     title,
     type,
-    // url,
+    url,
   } = job;
 
   const createDangerousHTML = (input) => {
@@ -59,7 +60,7 @@ const Card = ({ job, large }) => {
   if (large) {
     return (
       <>
-        <div className="container">
+        <div className="largeCardContainer">
           <CardContainer>
             <SubContainer>
               <span>
@@ -70,7 +71,7 @@ const Card = ({ job, large }) => {
                 <CardTitle>{title}</CardTitle>
                 <CardLocation>{location}</CardLocation>
               </span>
-              <Button>Apply Now</Button>
+              <Button target={url}>Apply Now</Button>
             </SubContainer>
             <CardDescription
               dangerouslySetInnerHTML={createDangerousHTML(description)}
@@ -78,7 +79,7 @@ const Card = ({ job, large }) => {
           </CardContainer>
         </div>
         <Footer>
-          <div className="container">
+          <div className="largeCardContainer">
             <HowToApply>
               <h3>How to Apply</h3>
               <p
@@ -87,13 +88,13 @@ const Card = ({ job, large }) => {
             </HowToApply>
           </div>
           <ApplyNowBG>
-            <div className="container">
+            <div className="largeCardContainer">
               <ApplyNow>
                 <ApplyDetails>
                   <h3>{title}</h3>
                   <h4>{company}</h4>
                 </ApplyDetails>
-                <Button>Apply Now</Button>
+                <Button target={url}>Apply Now</Button>
               </ApplyNow>
             </div>
           </ApplyNowBG>
@@ -125,21 +126,6 @@ const Card = ({ job, large }) => {
   }
 };
 
-const Button = styled.button`
-  background: var(--violet);
-  width: 100%;
-  border: 0;
-  border-radius: 6px;
-  padding: 20px 10px 10px;
-  color: var(--white);
-  /* margin-bottom: 2rem; */
-  font-size: 16px;
-  flex-shrink: 0;
-  @media (min-width: 600px) {
-    width: auto;
-    padding: 20px 40px 10px;
-  }
-`;
 export default Card;
 
 const CardDescription = styled.div`

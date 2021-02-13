@@ -27,7 +27,7 @@ export const FilterContainer = styled.div`
   padding: 30px 20px;
   border-radius: 5px;
   width: 100%;
-  margin-top: -150px;
+  margin-top: -160px;
   margin-bottom: 50px;
   display: flex;
   justify-content: space-between;

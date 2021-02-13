@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import Button from "../Button/Button";
 import Card from "../Card";
 import defaultLogo from "../defaultLogo.svg";
 import Loading from "../Loading/Loading";
 
 const Job = ({ jobsList, isLoading }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { id } = useParams();
   if (isLoading) {
     return <Loading />;
@@ -16,13 +20,17 @@ const Job = ({ jobsList, isLoading }) => {
 
   return (
     <>
-      <SmallCardContainer className="container">
+      <SmallCardContainer className="largeCardContainer">
         <SmallCardImage src={company_logo ? company_logo : defaultLogo} />
         <span>
           <SmallCardCompany>{company}</SmallCardCompany>
           <SmallCardCompanyUrl>{company_url}</SmallCardCompanyUrl>
         </span>
-        <SmallCardButton>Company Site</SmallCardButton>
+        {company_url && (
+          <Button light={true} target={company_url}>
+            Company Site
+          </Button>
+        )}
       </SmallCardContainer>
 
       <Card job={jobsList.find((job) => job.id === id)} large={true} />
@@ -35,7 +43,7 @@ const SmallCardContainer = styled.div`
   padding: 50px 20px;
   border-radius: 5px;
   width: 100%;
-  margin-top: -125px;
+  margin-top: -160px;
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -78,14 +86,6 @@ const SmallCardCompany = styled.h3`
 const SmallCardCompanyUrl = styled.h4`
   margin-bottom: 20px;
   color: var(--dark-grey);
-`;
-const SmallCardButton = styled.a`
-  background-color: rgba(89, 100, 224, 0.1);
-  color: var(--violet);
-  padding: 20px 30px 10px;
-  display: block;
-  border-radius: 10px;
-  flex-shrink: 0;
 `;
 
 export default Job;
