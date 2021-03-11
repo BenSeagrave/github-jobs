@@ -10,6 +10,9 @@ import Filter from "../Filter/Filter";
 
 function App() {
   const [jobsList, setJobsList] = useState([]);
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+  const [fullTime, setFullTime] = useState(false);
   const [jobsShown, setJobsShown] = useState([]);
   const [theme, setTheme] = useState("light");
   const [isLoading, setLoading] = useState(true);
@@ -37,14 +40,31 @@ function App() {
     dark: darkTheme,
   };
 
+  const fetchData = async (description = "", location = "", fullTime = "") => {
+    // Need to add CORS proxy if not using chrome extension/safe mode!
+
+    const encodedDescription = encodeURIComponent(description);
+    const encodedLocation = encodeURIComponent(location);
+    console.log(fullTime);
+    const response = await fetch(
+      `https://jobs.github.com/positions.json?description=${encodedDescription}&location=${encodedLocation}&full_time=${fullTime}`
+    );
+
+    const data = await response.json();
+    return data;
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    fetchData(description, location, fullTime).then((jobs) => {
+      setJobsList(jobs);
+      setLoading(false);
+    });
+    document.activeElement.blur();
+  };
   // On first load, load data into jobsList state with no search parameters
   useEffect(() => {
-    const fetchData = async () => {
-      // Need to add CORS proxy if not using chrome extension!
-      const response = await fetch("https://jobs.github.com/positions.json");
-      const data = await response.json();
-      return data;
-    };
     fetchData().then((jobs) => {
       setJobsList(jobs);
       setLoading(false);
@@ -79,7 +99,15 @@ function App() {
               exact
               render={() => (
                 <>
-                  <Filter />
+                  <Filter
+                    handleSearch={handleSearch}
+                    description={description}
+                    location={location}
+                    setDescription={setDescription}
+                    setLocation={setLocation}
+                    fullTime={fullTime}
+                    setFullTime={setFullTime}
+                  />
                   <Jobs
                     jobsList={jobsList}
                     jobsShown={jobsShown}
