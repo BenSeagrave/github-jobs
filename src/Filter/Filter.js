@@ -4,7 +4,6 @@ import { useMediaQuery } from "react-responsive";
 import {
   FilterContainer,
   FilterInput,
-  StyledSearchIcon,
   StyledLocationIcon,
   StyledSearchButton,
   StyledFilterIcon,
@@ -13,7 +12,6 @@ import {
   StyledIcon,
   StyledModal,
   StyledModalContent,
-  StyledModalClose,
   StyledModalSection,
   StyledHr,
 } from "./styles";
@@ -52,7 +50,6 @@ const Filter = ({
   };
 
   const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
-  const isTablet = useMediaQuery({ minWidth: 751, maxWidth: 1199 });
   const isTabletUp = useMediaQuery({ minWidth: 751 });
   const isDesktop = useMediaQuery({ query: "(min-width: 1200px)" });
 
