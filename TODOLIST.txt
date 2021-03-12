@@ -1,7 +1,0 @@
-change background of footer
-
-change link colour in card
-
-add tablet header image
-
-style filter

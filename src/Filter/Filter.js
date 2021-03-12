@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import {
@@ -27,9 +27,9 @@ const Filter = ({
   fullTime,
   setFullTime,
 }) => {
+  const [modalOpen, setModalOpen] = useState(false);
   const handleDescription = (e) => {
     setDescription(e.target.value);
-    console.log(fullTime);
   };
   const handleLocation = (e) => {
     setLocation(e.target.value);
@@ -42,7 +42,13 @@ const Filter = ({
     }
   };
   const handleModal = (e) => {
-    console.log("test");
+    console.log(e.target);
+    if (modalOpen === true) {
+      if (e.target.id === "myModal" || e.target.id === "submitBtn")
+        setModalOpen(false);
+    } else if (modalOpen === false) {
+      setModalOpen(true);
+    }
   };
 
   const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
@@ -98,7 +104,7 @@ const Filter = ({
         </FilterContainer>
       </form>
 
-      <StyledModal id="myModal">
+      <StyledModal id="myModal" modalOpen={modalOpen} onClick={handleModal}>
         <StyledModalContent>
           <form onSubmit={handleSearch}>
             <StyledModalSection>
@@ -123,7 +129,12 @@ const Filter = ({
               <StyledLabel htmlFor="fullTime">Full Time Only</StyledLabel>
             </StyledModalSection>
             <StyledModalSection>
-              <StyledSearchButton width="100%" type="submit" flexSize="0.7">
+              <StyledSearchButton
+                width="100%"
+                type="submit"
+                flexSize="0.7"
+                id="submitBtn"
+              >
                 Search
               </StyledSearchButton>
             </StyledModalSection>

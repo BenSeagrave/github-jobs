@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 import { ReactComponent as SearchIcon } from "./icon-search.svg";
-// import { ReactComponent as CheckIcon } from "./icon-check.svg";
 import { ReactComponent as FilterIcon } from "./icon-filter.svg";
 import { ReactComponent as LocationIcon } from "./icon-location.svg";
 
@@ -10,6 +9,8 @@ export const FilterInput = styled.input`
   flex: ${(props) => props.flexSize};
   font-size: 16px;
   width: 100%;
+  background: ${(props) => props.theme.cardBackgroundColor};
+  color: ${(props) => props.theme.headerColor};
   @media (min-width: 750px) {
   }
   @media (min-width: 900px) {
@@ -17,7 +18,7 @@ export const FilterInput = styled.input`
 `;
 
 export const FilterContainer = styled.div`
-  background: white;
+  background: ${(props) => props.theme.cardBackgroundColor};
   padding: 15px;
   border-radius: 5px;
   width: 100%;
@@ -47,9 +48,6 @@ export const StyledSearchIcon = styled(SearchIcon)`
       fill: white;
     }
   }
-  /* @media (max-width: 750px) {
-    display: none;
-  } */
 `;
 
 export const StyledSearchButton = styled.button`
@@ -104,6 +102,7 @@ export const StyledCheckbox = styled.input`
 export const StyledLabel = styled.label`
   flex: ${(props) => props.flexSize};
   margin-right: 8px;
+  color: ${(props) => props.theme.headerColor};
 `;
 
 export const StyledIcon = styled.i`
@@ -113,9 +112,9 @@ export const StyledIcon = styled.i`
 `;
 
 export const StyledModal = styled.div`
-  /* display: none; */
+  display: ${(props) => (props.modalOpen ? "flex" : "none")};
+
   position: fixed;
-  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
@@ -147,4 +146,5 @@ export const StyledModalSection = styled.div`
 
 export const StyledHr = styled.hr`
   margin: 10px 0;
+  border: 1px solid ${(props) => props.theme.buttonBackgroundColor};
 `;
