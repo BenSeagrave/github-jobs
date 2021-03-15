@@ -1,5 +1,5 @@
 {
-  "homepage": "https://benseagrave.com/github-jobs",
+  "homepage": "http://benseagrave.github.io/github-jobs",
   "name": "github-jobs-api",
   "version": "0.1.0",
   "private": true,
@@ -48,5 +48,6 @@
   "devDependencies": {},
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "proxy": "https://jobs.github.com"
 }

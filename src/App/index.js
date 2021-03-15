@@ -40,6 +40,8 @@ function App() {
     dark: darkTheme,
   };
 
+  const rootDir = "/github-jobs";
+
   const fetchData = async (description = "", location = "", fullTime = "") => {
     // Need to add CORS proxy if not using chrome extension/safe mode!
 
@@ -47,7 +49,7 @@ function App() {
     const encodedLocation = encodeURIComponent(location);
     console.log(fullTime);
     const response = await fetch(
-      `https://jobs.github.com/positions.json?description=${encodedDescription}&location=${encodedLocation}&full_time=${fullTime}`
+      `http://reverseproxy-env-1.eba-ijsxnfdx.eu-west-2.elasticbeanstalk.com/positions.json?description=${encodedDescription}&location=${encodedLocation}&full_time=${fullTime}`
     );
 
     const data = await response.json();
@@ -95,7 +97,7 @@ function App() {
         <BodyContainer>
           <Switch>
             <Route
-              path="/"
+              path={rootDir}
               exact
               render={() => (
                 <>
@@ -109,6 +111,7 @@ function App() {
                     setFullTime={setFullTime}
                   />
                   <Jobs
+                    rootDir={rootDir}
                     jobsList={jobsList}
                     jobsShown={jobsShown}
                     isLoading={isLoading}
@@ -119,7 +122,7 @@ function App() {
               )}
             />
             <Route
-              path="/job/:id"
+              path={`${rootDir}/job/:id`}
               render={() => <Job jobsList={jobsList} isLoading={isLoading} />}
             />
           </Switch>

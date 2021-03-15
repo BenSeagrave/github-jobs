@@ -3,13 +3,7 @@ import Card from "../Card/";
 import Loading from "../Loading/Loading";
 import { GridContainer } from "./styles";
 
-const Jobs = ({
-  jobsList,
-  jobsShown,
-  setJobsList,
-  setJobsShown,
-  isLoading,
-}) => {
+const Jobs = ({ jobsList, jobsShown, rootDir, setJobsShown, isLoading }) => {
   const handleLoadMore = () => {
     setJobsShown(jobsList.slice(0, jobsShown.length + 6));
   };
@@ -21,7 +15,7 @@ const Jobs = ({
     <>
       <GridContainer className="container">
         {jobsShown.map((job) => (
-          <Card key={job.id} job={job} />
+          <Card key={job.id} job={job} rootDir={rootDir} />
         ))}
       </GridContainer>
       <div className="container center">

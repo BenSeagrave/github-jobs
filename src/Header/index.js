@@ -19,7 +19,7 @@ const Header = ({ theme, setTheme }) => {
   return (
     <StyledHeader>
       <div className="container">
-        <Link to="/">
+        <Link to="/github-jobs/">
           <img src={Logo} alt="logo" />
         </Link>
         <ThemeSwitch>

@@ -43,7 +43,7 @@ const enStrings = {
 
 const formatter = buildFormatter(enStrings);
 
-const Card = ({ job, large }) => {
+const Card = ({ job, large, rootDir }) => {
   const {
     company,
     company_logo,
@@ -116,7 +116,7 @@ const Card = ({ job, large }) => {
           <TimeAgo date={created_at} formatter={formatter} /> &bull; {type}
         </TimeText>
         <CardTitle>
-          <Link to={`/job/${id}`}>
+          <Link to={`${rootDir}/job/${id}`}>
             {title && title.length > 40
               ? `${title.substring(0, 40)}...`
               : title}
