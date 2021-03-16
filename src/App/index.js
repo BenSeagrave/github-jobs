@@ -49,7 +49,7 @@ function App() {
     const encodedLocation = encodeURIComponent(location);
     console.log(fullTime);
     const response = await fetch(
-      `http://reverseproxy-env-1.eba-ijsxnfdx.eu-west-2.elasticbeanstalk.com/positions.json?description=${encodedDescription}&location=${encodedLocation}&full_time=${fullTime}`
+      `https://proxy.benseagrave.com/positions.json?description=${encodedDescription}&location=${encodedLocation}&full_time=${fullTime}`
     );
 
     const data = await response.json();
