@@ -49,7 +49,7 @@ function App() {
     const encodedLocation = encodeURIComponent(location);
     console.log(fullTime);
     const response = await fetch(
-      `https://proxy.benseagrave.com/positions.json?description=${encodedDescription}&location=${encodedLocation}&full_time=${fullTime}`
+      `https://proxy.benseagrave.com/https://jobs.github.com/positions.json?description=${encodedDescription}&location=${encodedLocation}&full_time=${fullTime}`
     );
 
     const data = await response.json();
