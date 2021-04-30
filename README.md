@@ -7,7 +7,7 @@ This project started as a sketch file which I then developed into a functional w
 [View Live Website](https://www.google.com "GitHub Jobs API")
 
 
-[Website Preview](https://benseagrave.com/images/github-jobs-api.png "Website Preview")
+![Website Preview](https://benseagrave.com/images/github-jobs-api.gif "Website Preview")
 
 
 ## Built With
